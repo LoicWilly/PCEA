@@ -9,16 +9,15 @@ if (!isConnect()) {
 $grpname = " ";
 $weight = -1;
 if (isset($_POST["createGroup"])) {
-    var_dump($_POST);
     if (isset($_POST["groupname"])) {
-        $grpname = htmlspecialchars(trim($_POST["groupname"]));
+        $grpname = strVerif($_POST["groupname"]);
     }
     if (isset($_POST["weight"])) {
-        $weight = htmlspecialchars(trim($_POST["weight"]));
+        $weight = strVerif($_POST["weight"]);
     }
     if ($grpname != " " && $weight != -1) {
         $idGroup = CreateGroup($grpname);
-        AddUserToGroup($idGroup, $_SESSION['infoUser']['idUser'], $weight);
+        AddUserToGroup($idGroup, $_SESSION['infoUser']['idUser'], $weight, 1);
         header("location:index.php");
     }
 }
@@ -28,8 +27,7 @@ if (isset($_POST["createGroup"])) {
     <head>
         <meta charset="UTF-8">
         <title>Création de groupe</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="./css/style.css" rel="stylesheet" type="text/css" >
+        <?php include 'cssInclude.html'; ?>
     </head>
     <body>      
         <?php include 'navBar.php'; ?>

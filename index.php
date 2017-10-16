@@ -9,8 +9,7 @@ include_once 'function.inc.php';
     <head>
         <meta charset="UTF-8">
         <title>PCMA</title>
-        <link href="./css/bootstrap.min.css" rel="stylesheet">
-        <link href="./css/style.css" rel="stylesheet" type="text/css" >
+        <?php include 'cssInclude.html'; ?>
     </head>
     <body>
         <?php include 'navBar.php'; ?> 

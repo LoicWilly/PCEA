@@ -10,15 +10,15 @@ $username = " ";
 $pwd = " ";
 if (isset($_POST["connexion"])) {
     if (isset($_POST["username"])) {
-        $username = htmlspecialchars(trim($_POST["username"]));
+        $username = strVerif($_POST["username"]);
     }
     if (isset($_POST["password1"])) {
-        $pwd = sha1(htmlspecialchars(trim($_POST["password1"])));
+        $pwd = sha1(strVerif($_POST["password1"]));
     }
     if ($username != " " && $pwd != " ") {
         $infoUser = Connexion($username, $pwd);
         if ($infoUser != null) {
-            $_SESSION['infoUser'] = $infoUser[0];
+            $_SESSION['infoUser'] = $infoUser;
             header("location:index.php");
         }
     }
@@ -29,8 +29,7 @@ if (isset($_POST["connexion"])) {
     <head>
         <meta charset="UTF-8">
         <title>Connexion</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="./css/style.css" rel="stylesheet" type="text/css" >
+        <?php include 'cssInclude.html'; ?>
     </head>
     <body>      
         <?php include 'navBar.php'; ?>
@@ -41,12 +40,7 @@ if (isset($_POST["connexion"])) {
                     <label for="inputEmail3" class="col-sm-4 control-label">Nom d'utilisateur</label>
                     <input type="text" class="form-control" name="username" value="" maxlength="16" required="required"><br/><br/>
                     <label for="inputEmail3" class="col-sm-4 control-label">Mot de passe</label>
-                    <input type="password" class="form-control" name="password1" value="" maxlength="40" required="required"><br/><br/>
-                </fieldset> 
-                <br/>
-                <br/>
-                <fieldset>
-                    <legend>Valider</legend>              
+                    <input type="password" class="form-control" name="password1" value="" maxlength="40" required="required"><br/><br/>             
                     <input type="submit" class="btn btn-default" name="connexion" value="Se connecter"><br/>
                 </fieldset> 
             </form>

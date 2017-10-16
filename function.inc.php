@@ -1,14 +1,13 @@
 <?php
-
 /* Author : Willy Loïc
  */
 
-function isConnect() {
-    if (isset($_SESSION["infoUser"])) {
-        return ($_SESSION["infoUser"] != null);
-    }
-    return false;
-}
+include 'selectFunction.inc.php';
+include 'insertFunction.inc.php';
+include 'updateFunction.inc.php';
+include 'deleteFunction.inc.php';
+
+ /* DB connection */
 
 function connexionDb() {
     try {
@@ -20,62 +19,39 @@ function connexionDb() {
     return $bdd;
 }
 
-function Connexion($user, $pwd) {
-    $bdd = connexionDb();
-    $reponse = $bdd->prepare('SELECT * FROM tusers WHERE username = :user AND password = :pwd');
-    $reponse->execute(array(":user" => $user, ":pwd" => $pwd));
-    return $reponse->fetchAll();
-}
-
-function GetUserByUser($username) {
-    $bdd = connexionDb();
-    $reponse = $bdd->prepare('SELECT * FROM tusers WHERE username= :username');
-    $reponse->execute(array(":username" => $username));
-    return $reponse->fetchAll();
-}
-
-function GetUserByIdUser($idUser) {
-    $bdd = connexionDb();
-    $reponse = $bdd->prepare('SELECT * FROM tusers WHERE idUser= :idUser');
-    $reponse->execute(array(":idUser" => $idUser));
-    return $reponse->fetchAll(PDO::FETCH_ASSOC)[0];
-}
 
 function strVerif($str){
     return htmlspecialchars(trim($str));
 }
 
-function GetGroupById($idGroup) {
-    $bdd = connexionDb();
-    $reponse = $bdd->prepare('SELECT * FROM tgroups, ingroup WHERE tgroups.idGroup= :idGroup');
-    $reponse->execute(array(":idGroup" => $idGroup));
-    return $reponse->fetchAll(PDO::FETCH_ASSOC);
+function deleteUserInSubGroupAndSubGroup($idGroup){
+    
 }
 
-function AddUser($username, $pwd, $firstname, $lastname) {
-    $bdd = connexionDb();
-    $reponse = $bdd->prepare('INSERT INTO `tusers`(`username`, `password`, `firstname`, `lastname`) VALUES (:username, :pwd, :firstname, :lastname);');
-    $reponse->execute(array(":username" => $username, ":pwd" => $pwd, ":firstname" => $firstname, ":lastname" => $lastname));
+function isConnect() {
+    if (isset($_SESSION["infoUser"])) {
+        return ($_SESSION["infoUser"] != null);
+    }
+    return false;
 }
 
-function CreateGroup($nameGroup) {
-    $bdd = connexionDb();
-    $reponse = $bdd->prepare('INSERT INTO `tgroups`(`nameGroup`) VALUES (:nameGroup);');
-    $reponse->execute(array(":nameGroup" => $nameGroup));
-    return $bdd->lastInsertId();
-}
-
-function AddUserToGroup($idGroup, $idUser, $weight){
-   $bdd = connexionDb();
-    $reponse = $bdd->prepare('INSERT INTO `ingroup`(`idGroup`, `idUser`, `weight`) VALUES (:idGroup, :idUser, :weight);');
-    $reponse->execute(array(":idGroup" => $idGroup, ":idUser" => $idUser, ":weight" => $weight)); 
-}
-
-function GetAllGroupFromUser($idUser) {
-    $bdd = connexionDb();
-    $reponse = $bdd->prepare('SELECT * FROM tgroups JOIN ingroup ON ingroup.idGroup WHERE idUser = :idUser');
-    $reponse->execute(array(":idUser" => $idUser));
-    return $reponse->fetchAll();
+function AlertMessage($id, $link) {
+    echo '<div class="modal fade" id="' . $id . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Supprimer ?</h4>
+                        </div>
+                        <div class="modal-body">
+                            Attention la suppression est irréversible ! Continuer ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+                            <a href="' . $link . '"><button type="button" class="btn btn-primary">Oui</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>';
 }
 
 ?>

@@ -8,8 +8,7 @@ require 'function.inc.php';
     <head>
         <meta charset="UTF-8">
         <title>404</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="./css/style.css" rel="stylesheet" type="text/css" >
+        <?php include 'cssInclude.html'; ?>
     </head>
     <body>
         <?php

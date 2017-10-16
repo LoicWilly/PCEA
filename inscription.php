@@ -30,20 +30,20 @@ if (isset($_POST["inscription"])) {
         $error .= "<p>Nom d'utilisateur invalide !</p>";
     }
     if (isset($_POST["firstname"])) {
-            if (strlen($_POST["firstname"]) >= 3 && strlen($_POST["firstname"]) <= 25) {
-                    $firstname = htmlspecialchars(trim($_POST["firstname"]));
-            } else {
-                $error .= "<p>Prénom trop long ou trop court !</p>";
-            }
+        if (strlen($_POST["firstname"]) >= 3 && strlen($_POST["firstname"]) <= 25) {
+            $firstname = htmlspecialchars(trim($_POST["firstname"]));
+        } else {
+            $error .= "<p>Prénom trop long ou trop court !</p>";
+        }
     } else {
         $error .= "<p>Prénom invalide !</p>";
     }
     if (isset($_POST["lastname"])) {
-            if (strlen($_POST["lastname"]) >= 3 && strlen($_POST["lastname"]) <= 25) {
-                    $lastname = htmlspecialchars(trim($_POST["lastname"]));
-            } else {
-                $error .= "<p>Nom trop long ou trop court !</p>";
-            }
+        if (strlen($_POST["lastname"]) >= 3 && strlen($_POST["lastname"]) <= 25) {
+            $lastname = htmlspecialchars(trim($_POST["lastname"]));
+        } else {
+            $error .= "<p>Nom trop long ou trop court !</p>";
+        }
     } else {
         $error .= "<p>Nom invalide !</p>";
     }
@@ -76,8 +76,7 @@ if (isset($_POST["inscription"])) {
     <head>
         <meta charset="UTF-8">
         <title>Inscription</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="./css/style.css" rel="stylesheet" type="text/css" >
+        <?php include 'cssInclude.html'; ?>
     </head>
     <body>      
         <?php include 'navBar.php'; ?>
@@ -86,26 +85,22 @@ if (isset($_POST["inscription"])) {
                 <?php echo $alert ?>
                 <fieldset class="form-horizontal">
                     <legend>Inscription</legend>
-                    <label for="inputEmail3" class="col-sm-4 control-label">Nom d'utilisateur*</label>
+                    <label for="inputEmail3" class="col-sm-6 control-label">Nom d'utilisateur*</label>
                     <input type="text" class="form-control" name="username" maxlength="16" value="<?php echo (isset($_POST["username"])) ? ($_POST["username"]) : ("") ?>" required="required"><br/><br/>
 
-                    <label for="inputEmail3" class="col-sm-4 control-label">Mot de passe* </label>
+                    <label for="inputEmail3" class="col-sm-6 control-label">Mot de passe* </label>
                     <input type="password" class="form-control" name="password1" value="" maxlength="40" required="required"><br/><br/>
 
-                    <label for="inputEmail3" class="col-sm-4 control-label">Retapez le mot de passse* </label>
+                    <label for="inputEmail3" class="col-sm-6 control-label">Retapez le mot de passe* </label>
                     <input type="password" class="form-control" name="password2" value="" maxlength="40" required="required"><br/><br/>
 
-                    <label for="inputEmail3" class="col-sm-4 control-label">Nom </label>
+                    <label for="inputEmail3" class="col-sm-6 control-label">Nom </label>
                     <input type="text" class="form-control" name="lastname" maxlength="50" value="<?php echo (isset($_POST["lastname"])) ? ($_POST["lastname"]) : ("") ?>"><br/><br/>
 
-                    <label for="inputEmail3" class="col-sm-4 control-label">Prénom </label>
+                    <label for="inputEmail3" class="col-sm-6 control-label">Prénom </label>
                     <input type="text" class="form-control" name="firstname" maxlength="50" value="<?php echo (isset($_POST["firstname"])) ? ($_POST["firstname"]) : ("") ?>"><br/><br/>
 
-                    *Champs obligatoires
-                </fieldset> 
-                <br/>
-                <fieldset>
-                    <legend>Valider</legend>              
+                    <p>*Champs obligatoires</p>            
                     <input type="submit" class="btn btn-default" name="inscription" value="S'inscrire"><br/>
                 </fieldset>
                 <br/>

@@ -3,194 +3,39 @@ body{
     vertical-align: middle;
 
 }
-.media-body{
-    width: 0px;
-}
-.media{
-    padding-left: 33%;
-}
-.table{
+
+.content{
     margin: auto;
-    width: 50%;
-}
-.titleTableAuthor{
-    width: 16em;
-    text-align: center;
-}
-.titleTableLastMessage{
-    width: 12em;
-     text-align: center;
-}
-#nameTopic{
-    width: 24em;
-}
-.titleTable{
-    text-align: center;
-}
-.titreTopic{
-    width: 600px;
-    text-align: left;
-    padding-left: 1em;
-}
-.titreMessage{
-    width: 600px;
-    text-align: left;
-    padding-left: 1em;
-    text-decoration: none;
-}
-.bgComm{
-    border: 1px solid lightgray;
-    padding: 1em;
-    background-color: #eef5fc;
-}
-.comm{
-    padding-left: 1em;
-    text-align: left;
-    border-left: none;
+    width: 100%;
 }
 
-.titreTopic a:visited{
-    text-decoration: none; 
-    color: gray;
+
+.container {
+  margin-top: 40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
-.titreTopic a{
-    text-decoration: none; 
-    color: #0080e1;
-}
-.adminControl{
-    display: inline;
-    float: right;
-    text-align: right;
-}
-.adminText{
-    color: #FF0000;
-}
-.authorName{
-    text-decoration: none; 
-    display: inline;
-    color: black;
-}
-.authorName:hover{
-    text-decoration: none; 
-    display: inline;
-    color: black;
-}
-.authorName:visited{
-    text-decoration: none; 
-    display: inline;
-    color: black;
+.vertical {
+  display: inline-block;
+  width: 15%;
+  height: 6em;
+  -webkit-transform: rotate(-90deg) scale(-1);
+  transform: rotate(-90deg);
+  box-shadow: inset 0px 4px 6px #ccc;
 }
 
-.messages{
-    padding-top: 1.5em;
-    text-align: left;
-    float: left;
-    width: 24em;
-    word-wrap: break-word;
-}
-.authorNameA{
-    color: #db0f0f;
-    text-decoration: none; 
-}
-.authorNameA:hover{
-    text-decoration: none; 
-    display: inline;
-    color: #db0f0f;
-}
-.authorNameA:visited{
-    text-decoration: none; 
-    display: inline;
-    color: #db0f0f;
+.progress-bar {
+  box-shadow: inset 0px 4px 6px rgba(100,100,100,0.6);
 }
 
-.authorNameM{
-    color: #db0f0f;
-    text-decoration: none; 
-    display: inline;
-}
-.authorNameM:hover{
-    text-decoration: none; 
-    display: inline;
-    color: #db0f0f;
-}
-.authorNameM:visited{
-    text-decoration: none; 
-    display: inline;
-    color: #db0f0f;
-}
 
-.authorNameF{
-    color: hotpink;
-    text-decoration: none; 
-    display: inline;
-}
-.authorNameH{
-    color: dodgerblue;
-    text-decoration: none; 
-    display: inline;
-}
-.titreMessage a:hover{
-    text-decoration: none; 
-}
 fieldset{
     margin: auto;
     width: 50%;
 }
 
-.pvRead {
-    text-decoration: none; 
-    color: gray;
-    display: inline;
-}
-.pvUnRead {
-    text-decoration: none; 
-    color: #0080e1;
-    display: inline;
-    font-weight: bold;
-}
-.previewCom{
-    float: left;
-    display: block;
-}
-.showForum{
-    width: 50%;
-    margin: auto;
-    
-}
 .footer-bottom{
     padding-top: 10em; 
-}
-.media-heading{
-  text-align: left;
-  border-bottom: 1px dotted lightgray;
-}
-.imageProfil{
-    width: 100px;
-    height: 100px;
-    float: top;
-    vertical-align: top;
-    border-right: none;
-}
-.imageProfilP{
-    width: 100px;
-    height: 100px;
-    display: inline;
-    padding-left: 1em;
-}
-.modal{
-    text-align: center;
-}
-#imagePick{
-    text-align: center;
-    margin: auto;
-}
-.dateText{
-    font-style: italic;
-    display: inline;
-    font-size: 0.75em;
-}
-.media-body{
-    width: 400px;
 }
 
 #bottomValid{

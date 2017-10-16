@@ -5,6 +5,34 @@ session_start();
 require 'function.inc.php';
 $idUser = "";
 $infoUser = array();
+$firstname = "";
+$lastname = "";
+$username = "";
+$error = "";
+if (isset($_POST['changeProfil'])) {
+    if (isset($_POST["firstname"])) {
+        if (strlen($_POST["firstname"]) >= 3 && strlen($_POST["firstname"]) <= 25) {
+            $firstname = strVerif($_POST["firstname"]);
+        } else {
+            $error .= "<p>Prénom trop long ou trop court !</p>";
+        }
+    } else {
+        $error .= "<p>Prénom invalide !</p>";
+    }
+    if (isset($_POST["lastname"])) {
+        if (strlen($_POST["lastname"]) >= 3 && strlen($_POST["lastname"]) <= 25) {
+            $lastname = strVerif($_POST["lastname"]);
+        } else {
+            $error .= "<p>Nom trop long ou trop court !</p>";
+        }
+    } else {
+        $error .= "<p>Nom invalide !</p>";
+    }
+    if($firstname != "" && $lastname != ""){
+        UpdateProfil($_SESSION['infoUser']['idUser'], $firstname, $lastname);
+        $_SESSION['infoUser'] = Connexion($_SESSION['infoUser']['username'], $_SESSION['infoUser']['password'])[0];
+    }
+}
 if (isset($_GET['username'])) {
     if (isConnect() && $_SESSION['infoUser']['username'] == $_GET['username']) {
         $username = $_SESSION['infoUser']['username'];
@@ -29,15 +57,15 @@ if (isset($_GET['username'])) {
     <head>
         <meta charset="UTF-8">
         <title>Profil</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="./css/style.css" rel="stylesheet" type="text/css" >
+        <?php include 'cssInclude.html'; ?>
         <script>
         </script>
     </head>
     <body>      
         <div id="content">
             <?php include 'navBar.php'; ?>
-            <form  method="post" action='profil.php'>
+            <?php echo $error ?>
+            <form  method="post" action='profil.php?username=<?php echo $username ?>'>
                 <fieldset class="form-group">
                     <legend>Information</legend>
                     Nom d'utilisateur : <?php echo $username ?> <br/>
@@ -56,15 +84,10 @@ if (isset($_GET['username'])) {
                         <?php echo $firstname ?>
                         <?php echo $lastname ?>
                     <?php } ?>
-                </fieldset> 
-                <br/>
-                <br/>
-                <?php
-                if (isConnect() && $_SESSION['infoUser']['username'] == $username) {
-                    ?>
-                    <fieldset>
-                        <legend>Valider</legend>              
-                        <input type="submit" class="btn btn-default" name="changeProfil" value="Modifier"><br/>
+                    <?php
+                    if (isConnect() && $_SESSION['infoUser']['username'] == $username) {
+                        ?>            
+                        <input type="submit" class="btn btn-default" name="changeProfil" value="Modifier le profil"><br/>
                     </fieldset> 
                 <?php } ?>
             </form>
